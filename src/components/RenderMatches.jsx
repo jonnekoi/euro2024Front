@@ -18,7 +18,20 @@ const RenderMatches = ({ user}) => {
   };
 
   useEffect(() => {
-    fetchMatches();
+    const fetchMatchesAsync = async () => {
+      try {
+        const response = await fetch(`${url}/get/matches/${user}`);
+        if (!response.ok) {
+          throw new Error("Error", response.statusText);
+        }
+        const rows = await response.json();
+        setMatches(rows);
+      } catch (error) {
+        console.error('Failed to fetch matches:', error);
+      }
+    };
+
+    fetchMatchesAsync();
   }, []);
 
   const submitGuess = async (matchId, guess) => {
@@ -43,6 +56,7 @@ const RenderMatches = ({ user}) => {
       if (!response.ok) {
         throw new Error('HTTP error! Status: ' + response.status);
       }
+      await fetchMatches();
     } catch (error) {
       console.error('Error submitting guess:', error);
     }
@@ -50,7 +64,7 @@ const RenderMatches = ({ user}) => {
 
   return (
       <table className="max-h-64 w-1/2 overflow-y-auto border-2 border-black m-10">
-        <thead className="bg-gray-300">
+        <thead className="bg-blue-500">
         <tr>
           <th className="text-center py-2 px-4 font-bold border-2 border-black">Home Team</th>
           <th className="text-center py-2 px-4 font-bold border-2 border-black">Away Team</th>
@@ -68,7 +82,7 @@ const RenderMatches = ({ user}) => {
               <td className="text-center py-2 px-4 border-2 border-black">{match.homeScore}-{match.awayScore}</td>
               <td className="text-center py-2 px-4 border-2 border-black">{match.guess}</td>
               <td className="text-center py-2 px-4 border-2 border-black">
-                <input type="text" name="guess" placeholder="e.g. 1-1" className="light-border guess-input" />
+                <input type="text" name="guess" placeholder="Guess here..." className="bg-gray-300 text-black"/>
               </td>
               <td className="text-center py-2 px-4 border-2 border-black">
                 {!match.guess && (

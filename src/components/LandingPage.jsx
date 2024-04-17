@@ -6,7 +6,6 @@ const LandingPage = ({ setIsLoggedIn }) => {
   return (
       <>
         <div>
-          <h1 className="text-6xl">Euro 2024</h1>
           <LoginForm setIsLoggedIn={setIsLoggedIn}/>
           <RegisterForm setIsLoggedIn={setIsLoggedIn}/>
         </div>

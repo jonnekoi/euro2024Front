@@ -16,8 +16,7 @@ const MainContent = () => {
   return (
       <>
         <div className="flex justify-center items-center">
-          <h1 className="text-6xl">Euro 2024</h1>
-          <button onClick={handleClick} className="ml-10 border rounded px-4 py-2 bg-blue-500 text-white">LogOut</button>
+          <button onClick={handleClick} className="m-10 border rounded px-4 py-2 bg-blue-500 text-white">LogOut</button>
         </div>
         <div className="flex justify-center">
           <RenderMatches user={username}/>

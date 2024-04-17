@@ -26,7 +26,7 @@ const RenderPoints = () => {
   return (
       <table
           className="max-h-64 w-1/2 overflow-y-auto border-2 border-black m-10">
-          <thead className="bg-gray-300">
+          <thead className="bg-blue-500">
           <tr>
             <th className="text-center py-2 px-4 font-bold border-2 border-black">Username</th>
             <th className="text-center py-2 px-4 font-bold border-2 border-black">Points</th>
