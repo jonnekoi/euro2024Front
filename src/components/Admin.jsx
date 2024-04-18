@@ -1,9 +1,65 @@
 import React from 'react';
+const url = 'http://localhost:3000/v1';
 const Admin = () => {
+
+  const handleAddMatch = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    try {
+      const response = await fetch(url + '/get/matches/', fetchOptions);
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert("Error adding match!")
+        console.log(errorData);
+      } else {
+        alert("Match added!")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAddResult = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    try {
+      const response = await fetch(url + '/get/matches/', fetchOptions);
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert("Error adding result!")
+        console.log(errorData);
+      } else {
+        alert("Result added!")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
   return (
       <div className="content-wrapper mb-10 mt-10">
         <div className="flex justify-center">
-          <form className="form-container">
+          <form className="form-container" onSubmit={handleAddMatch}>
             <div>
               <input className="border rounded p-2 m-1" type="text" name="homeTeam" id="homeTeam" placeholder="Home team"/>
             </div>
@@ -22,7 +78,7 @@ const Admin = () => {
           </form>
         </div>
         <div className="flex justify-center mt-10">
-          <form className="form-container">
+          <form className="form-container" onSubmit={handleAddResult}>
             <div>
               <input className="border rounded p-2 m-1" type="text" name="homeTeam" id="home" placeholder="Home team"/>
             </div>

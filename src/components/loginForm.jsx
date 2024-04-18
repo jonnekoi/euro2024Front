@@ -24,7 +24,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
         console.log("login ok");
       }
     } catch (error){
-      console.log(error);
+      alert("Väärä käyttäjänimi tai salasana!")
     }
   }
 

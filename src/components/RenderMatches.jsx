@@ -63,45 +63,56 @@ const RenderMatches = ({ user}) => {
   };
 
   return (
-      <table className="max-h-64 w-1/2 overflow-y-auto border-2 border-black m-10">
-        <thead className="bg-blue-500">
-        <tr>
-          <th className="text-center py-2 px-4 font-bold border-2 border-black">Home Team</th>
-          <th className="text-center py-2 px-4 font-bold border-2 border-black">Away Team</th>
-          <th className="text-center py-2 px-4 font-bold border-2 border-black">Result</th>
-          <th className="text-center py-2 px-4 font-bold border-2 border-black">Your Guess</th>
-          <th className="text-center py-2 px-4 font-bold border-2 border-black">Guess</th>
-          <th className="text-center py-2 px-4 font-bold border-2 border-black">Submit</th>
-        </tr>
-        </thead>
-        <tbody>
-        {matches.map((match) => (
-            <tr key={match.id} className="hover:bg-gray-500">
-              <td className="text-center py-2 px-4 border-2 border-black">{match.homeTeam}</td>
-              <td className="text-center py-2 px-4 border-2 border-black">{match.awayTeam}</td>
-              <td className="text-center py-2 px-4 border-2 border-black">{match.homeScore}-{match.awayScore}</td>
-              <td className="text-center py-2 px-4 border-2 border-black">{match.guess}</td>
-              <td className="text-center py-2 px-4 border-2 border-black">
-                <input type="text" name="guess" placeholder="Guess here..." className="bg-gray-300 text-black"/>
-              </td>
-              <td className="text-center py-2 px-4 border-2 border-black">
-                {!match.guess && (
-                    <button
-                        type="button"
-                        className="border rounded px-4 py-2 bg-blue-500 text-white mt-2"
-                        onClick={(event) => {
-                          const guess = event.target.parentElement.previousElementSibling.firstElementChild.value;
-                          submitGuess(match.id, guess);
-                        }}
-                    >
-                      Submit Guess
-                    </button>
-                )}
-              </td>
+      <div className="max-h-96 overflow-auto overflow-x-hidden w-auto">
+        <div>
+          <table className="w-auto">
+            <thead className="bg-blue-500">
+            <tr>
+              <th className="text-center py-2 px-4 font-bold border-2 border-black">Home
+                Team
+              </th>
+              <th className="text-center py-2 px-4 font-bold border-2 border-black">Away
+                Team
+              </th>
+              <th className="text-center py-2 px-4 font-bold border-2 border-black">Result</th>
+              <th className="text-center py-2 px-4 font-bold border-2 border-black">Your
+                Guess
+              </th>
+              <th className="text-center py-2 px-4 font-bold border-2 border-black">Guess</th>
+              <th className="text-center py-2 px-4 font-bold border-2 border-black">Submit</th>
             </tr>
-        ))}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+            {matches.map((match) => (
+                <tr key={match.id} className="hover:bg-gray-500">
+                  <td className="text-center py-2 px-4 border-2 border-black">{match.homeTeam}</td>
+                  <td className="text-center py-2 px-4 border-2 border-black">{match.awayTeam}</td>
+                  <td className="text-center py-2 px-4 border-2 border-black">{match.homeScore}-{match.awayScore}</td>
+                  <td className="text-center py-2 px-4 border-2 border-black">{match.guess}</td>
+                  <td className="text-center py-2 px-4 border-2 border-black">
+                    <input type="text" name="guess" placeholder="Guess here"
+                           className="bg-gray-300 text-black w-20"/>
+                  </td>
+                  <td className="text-center py-2 px-4 border-2 border-black">
+                    {!match.guess && (
+                        <button
+                            type="button"
+                            className="border rounded px-4 py-2 bg-blue-500 text-white mt-2"
+                            onClick={(event) => {
+                              const guess = event.target.parentElement.previousElementSibling.firstElementChild.value;
+                              submitGuess(match.id, guess);
+                            }}
+                        >
+                          Submit
+                        </button>
+                    )}
+                  </td>
+                </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
   );
 };
 

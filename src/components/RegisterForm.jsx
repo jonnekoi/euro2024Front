@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 const url = 'http://localhost:3000/v1'
 const RegisterForm = ({ setIsLoggedIn }) => {
@@ -18,6 +18,9 @@ const RegisterForm = ({ setIsLoggedIn }) => {
       const response = await fetch(url + '/auth/register', fetchOptions);
       if(response.ok) {
         setIsLoggedIn(true);
+      }
+      else if(response.status === 409) {
+        alert("Username already exists!");
       }
     } catch (error){
       console.log(error);
