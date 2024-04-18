@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import RenderMatches from './RenderMatches.jsx';
 import RenderPoints from './RenderPoints.jsx';
 
