@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const url = 'http://10.120.32.101/app/v1';
+const url = 'http://127.0.0.1:3000/v1';
 const RenderMatches = ({ user}) => {
   const [matches, setMatches] = useState([]);
 
@@ -63,9 +63,9 @@ const RenderMatches = ({ user}) => {
   };
 
   return (
-      <div className="max-h-96 overflow-auto overflow-x-hidden w-auto">
+      <div className="max-h-96">
         <div>
-          <table className="w-auto">
+          <table className="w-auto matches-table">
             <thead className="bg-blue-500">
             <tr>
               <th className="text-center py-2 px-4 font-bold border-2 border-black">Home

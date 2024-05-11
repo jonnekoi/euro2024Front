@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const url = 'http://10.120.32.101/app/v1';
+const url = 'http://127.0.0.1:3000/v1';
 
 const RenderPoints = () => {
   const [pointsData, setPointsData] = useState([]);
@@ -25,7 +25,8 @@ const RenderPoints = () => {
 
   return (
       <table
-          className="max-h-64 w-1/2 overflow-y-auto border-2 border-black m-10">
+          id="pointsTable"
+          className="max-h-64 w-1/2 overflow-y-auto border-2 border-black ml-10">
           <thead className="bg-blue-500">
           <tr>
             <th className="text-center py-2 px-4 font-bold border-2 border-black">Username</th>

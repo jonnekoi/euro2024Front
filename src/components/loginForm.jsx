@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const url = 'http://10.120.32.101/app/v1';
+const url = 'http://127.0.0.1:3000/v1';
 const LoginForm = ({ setIsLoggedIn }) => {
   const handleSubmit = async (event)=> {
     event.preventDefault();

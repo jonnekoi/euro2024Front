@@ -22,7 +22,7 @@ const MainContent = () => {
         <div className="">
           <button onClick={handleClick} className="m-10 border rounded px-4 py-2 bg-blue-500 text-white">LogOut</button>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center content-container">
           <RenderMatches user={username}/>
           <RenderPoints user={username}/>
         </div>
